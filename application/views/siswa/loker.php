@@ -24,20 +24,24 @@ $this->load->view('siswa/header');
             <h1 class="text-white">Lowongan Pekerjaan</h1>
         </div>
         <?php foreach ($lowongan as $row) { ?>
-        <div class="col-md-4 mb-4 mt-3 flex-column">
+    <div class="col-md-4 mb-4 mt-3 flex-column">
+        <a href="<?php echo base_url('siswa/Loker/detail/'.$row->id_lowongan); ?>">
             <div class="card h-100">
                 <img src="<?php echo base_url('assets/lowongan/img/'.$row->logo); ?>" class="card-img-top img-fluid d-block mx-auto mt-2" alt="<?php echo $row->nama_perusahaan; ?>" style="width: 100px; height: 100px;">
                 <div class="card-body">
                     <h4 class="card-text text-center mt-3"><?php echo $row->judul_lowongan; ?></h4>
                     <h4 class="card-text text-center" style="color:blue;"><?php echo $row->kota; ?></h4>
-                    <p class="card-text text-center mt-3"><?php echo $row->deskripsi_singkat; ?></p>
+                    <p class="card-text text-center mt-3" style="color:#383838;"><?php echo $row->deskripsi_singkat; ?></p>
                     <div class="text-center">
                         <small class="text-muted"><?php echo $row->jumlah_lowongan; ?> lowongan</small>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php } ?>
+        </a>
+    </div>
+<?php } ?>
+
+
     </div>
 </div>
 

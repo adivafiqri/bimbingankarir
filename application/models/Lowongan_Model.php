@@ -23,4 +23,11 @@ public function Get($table)
         $query = $this->db->get('lowongan');
         return $query->result();
     }
+
+    function ambil_data_id($id)
+	{
+		$this->db->where($this->id,$id);
+		// $this->db->where('id_akun',$id);
+		return $this->db->get($this->table)->row();
+	}
 }

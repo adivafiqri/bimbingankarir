@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2020 at 05:30 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Apr 11, 2023 at 05:04 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,6 +45,32 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 (6, 'post-kat2'),
 (7, 'post-kat3'),
 (8, 'post-kat4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lowongan`
+--
+
+CREATE TABLE `lowongan` (
+  `id_lowongan` int(11) NOT NULL,
+  `nama_perusahaan` varchar(255) NOT NULL,
+  `kota` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
+  `judul_lowongan` varchar(255) NOT NULL,
+  `deskripsi_singkat` varchar(255) NOT NULL,
+  `deskripsi_panjang` varchar(1000) NOT NULL,
+  `jumlah_lowongan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lowongan`
+--
+
+INSERT INTO `lowongan` (`id_lowongan`, `nama_perusahaan`, `kota`, `logo`, `judul_lowongan`, `deskripsi_singkat`, `deskripsi_panjang`, `jumlah_lowongan`) VALUES
+(1, 'Waskita Jaya', 'Jakarta, Indonesia', 'logo.png', 'IT Support Developer', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.', 'a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 2),
+(3, 'Microsoft', 'Manchaster, England', 'microsoft.png', 'Staff Administrasi', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, whe', 1),
+(4, 'Asus Inc.', 'Bogor, Jawa Barat', 'asus.png', 'Teknisi Mesin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, whe', 3);
 
 -- --------------------------------------------------------
 
@@ -106,8 +131,8 @@ CREATE TABLE `pengisi` (
 --
 
 INSERT INTO `pengisi` (`id_pengisi`, `username`, `id_kategori`, `jawaban`, `total_jawab`, `waktu`) VALUES
-(23, '9002345', '1', 'No 1 = 4 , No 2 = 4 , No 3 = 4 , No 4 = 4 , No 5 = 4 , No 6 = 4 , No 7 = 4 , No 8 = 4', 32, '2020-07-05 02:20:27'),
-(24, '9002345', '5', 'No 1 = 1 , No 2 = 4 , No 3 = 4 , No 4 = 1 , No 5 = 2 , No 6 = 4 , No 7 = 4', 20, '2020-08-28 00:14:05');
+(23, 'user', '1', 'No 1 = 4 , No 2 = 4 , No 3 = 4 , No 4 = 4 , No 5 = 4 , No 6 = 4 , No 7 = 4 , No 8 = 4', 32, '2020-07-05 02:20:27'),
+(24, 'user', '5', 'No 1 = 1 , No 2 = 4 , No 3 = 4 , No 4 = 1 , No 5 = 2 , No 6 = 4 , No 7 = 4', 20, '2020-08-28 00:14:05');
 
 -- --------------------------------------------------------
 
@@ -129,18 +154,11 @@ CREATE TABLE `tbl_akun` (
 --
 
 INSERT INTO `tbl_akun` (`id_akun`, `nama`, `ket`, `username`, `password`, `level`) VALUES
-(1, 'Najib Ibrahim', 'Kelas 12', '9002345', 'bcd724d15cde8c47650fda962968f102', 'siswa'),
+(1, 'Nugraha Anugrah', 'Kelas 12', 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'siswa'),
 (2, 'Admin ', 'Administrator', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
-(3, 'Haris Yuftika Hani', 'Guru BK', 'guruBK1', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(11, 'Nama Guru BK', 'Guru BK', 'guruBK2', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(12, 'Nama Guru BK', 'Guru BK', 'guruBK3', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(13, 'Nama Guru BK', 'Guru BK', 'guruBK4', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(14, 'Nama Guru BK', 'Guru BK', 'guruBK5', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(15, 'Nama Guru BK', 'Guru BK', 'guruBK6', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(16, 'Nama Guru BK', 'Guru BK', 'guruBK7', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(17, 'Nama Guru BK', 'Guru BK', 'guruBK8', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(18, 'Nama Guru BK', 'Guru BK', 'guruBK9', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
-(19, 'Nama Guru BK', 'Guru BK', 'guruBK10', '77e69c137812518e359196bb2f5e9bb9', 'guru');
+(3, 'Sinta Handayani', 'Guru BK', 'guruBK1', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
+(11, 'Phoenimin', 'Guru BK', 'guruBK2', '77e69c137812518e359196bb2f5e9bb9', 'guru'),
+(20, 'Nugraha Anugrah', 'Kelas 12', 'user', 'bcd724d15cde8c47650fda962968f102', 'siswa');
 
 -- --------------------------------------------------------
 
@@ -224,7 +242,8 @@ INSERT INTO `tbl_soal` (`id_soal`, `no_soal`, `soal`, `kategori`) VALUES
 (42, 16, 'Saya semakin mantap dengan rencana karir yang saya cita-citakan', 'KAT4'),
 (43, 17, 'Kelebihan saya dalam mengikuti pelajaran sangat mendukung perencanaan karir saya', 'KAT4'),
 (44, 18, 'Dalam membuat perencanaan karir saya mengkhawatirkan kelemahan yang saya miliki', 'KAT4'),
-(45, 19, 'Saya menyesal karena program studi yang saya ambil saat ini tidak sesuai dengan rencana karir saya', 'KAT4');
+(45, 19, 'Saya menyesal karena program studi yang saya ambil saat ini tidak sesuai dengan rencana karir saya', 'KAT4'),
+(46, 1, 'Apakah Soekarno presiden ke-2 RI ?', 'KAT1');
 
 --
 -- Indexes for dumped tables
@@ -235,6 +254,12 @@ INSERT INTO `tbl_soal` (`id_soal`, `no_soal`, `soal`, `kategori`) VALUES
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `lowongan`
+--
+ALTER TABLE `lowongan`
+  ADD PRIMARY KEY (`id_lowongan`);
 
 --
 -- Indexes for table `materi`
@@ -277,6 +302,12 @@ ALTER TABLE `kategori`
   MODIFY `id_kategori` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `lowongan`
+--
+ALTER TABLE `lowongan`
+  MODIFY `id_lowongan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
@@ -292,7 +323,7 @@ ALTER TABLE `pengisi`
 -- AUTO_INCREMENT for table `tbl_akun`
 --
 ALTER TABLE `tbl_akun`
-  MODIFY `id_akun` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_akun` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_level`
@@ -304,7 +335,7 @@ ALTER TABLE `tbl_level`
 -- AUTO_INCREMENT for table `tbl_soal`
 --
 ALTER TABLE `tbl_soal`
-  MODIFY `id_soal` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_soal` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

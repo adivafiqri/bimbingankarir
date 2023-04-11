@@ -22,7 +22,10 @@ class Loker extends CI_Controller {
 
     }
 
-   
+    public function detail($id_lowongan) {
+        $data['lowongan'] = $this->db->get_where('lowongan', array('id_lowongan' => $id_lowongan))->row();
+        $this->load->view('siswa/loker_detail', $data);
+    }
     
     public function logout()
     {
